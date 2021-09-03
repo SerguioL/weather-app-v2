@@ -3,3 +3,22 @@
     width: 98%;
     height: 340px;
 }
+
+article{
+    margin: 0 10px 10px 10px;
+    box-shadow:  5px 5px 5px grey;
+}
+
+#card-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid darkgray;
+    padding: 5px;
+    width: 330px;
+}
