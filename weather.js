@@ -1,4 +1,3 @@
-
 // creates map
 
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
@@ -97,16 +96,13 @@ function weather(lat, lon) {
 
             // let dynamicDay = new Date(data.daily[i].dt * 1000).toDateString()
 
-            $("#card-section").append('<article>' +
-                '<p class="list-group-item">' + formatted_date + '</p>' +
-                '<p class="list-group-item">' + '<img src="http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png"/>' + '</p>' +
-                '<p class="list-group-item">' + day.temp.min + '°F' + ' / ' + day.temp.max + '°F' + '</p>' +
-                '<p class="list-group-item">' + 'Description: ' + day.weather[0].description + '</p>' +
-                '<p class="list-group-item">' + 'Humidity: ' + day.humidity + '</p>' +
-                '<p class="list-group-item">' + 'Wind: ' + day.wind_speed + ' ' + windCardinalDirection(day.wind_deg) + '</p>' +
-                '<p class="list-group-item">' + 'Pressure: ' + day.pressure + '</p>' +
-                // '<p class="index" style="display: none">' + index + '</p>' +
-                '</article>');
+            $("#card-section").append(`<article>
+                <p>${formatted_date}</p>
+                <p><img src="http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png"/></p>
+                <p>${day.temp.min}°F / ${day.temp.max}°F</p><p class="list-group-item">Description: ${day.weather[0].description}</p>
+                <p>Humidity: ${day.humidity}</p><p class="list-group-item">Wind: ${day.wind_speed} ${windCardinalDirection(day.wind_deg)}</p>
+                <p>Pressure: ${day.pressure}</p>   
+        </article>`);
         });
 
     }).fail(function (error) {
