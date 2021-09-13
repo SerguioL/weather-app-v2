@@ -8,16 +8,39 @@ const map = new mapboxgl.Map({
     zoom: 10 // starting zoom
 });
 
-map.addControl(
-    new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-    })
-);
-
+// marker that can be moved with geocoder search bar or drag
 var marker = new mapboxgl.Marker({draggable: true})
     .setLngLat([-98.4936, 29.4241])
     .addTo(map);
+
+// adds geocoder to mapbox
+const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl,
+        marker: false
+    });
+
+// adds search bar for geocoder
+map.addControl(geocoder);
+
+//this gets the result of the geocoder a
+geocoder.on('result', function(data) {
+    console.log(data);
+    marker.setLngLat(data.result.center);
+    weather(data.result.center[0],data.result.center[1]);
+    console.log(data);
+});
+
+
+// var marker = new mapboxgl.Marker({draggable: true})
+//     .setLngLat([-98.4936, 29.4241])
+//     .addTo(map);
+
+
+// adds zoom + and -
+map.addControl(new mapboxgl.NavigationControl());
+
+
 
 marker.on('dragend', function () {
     var markerCoordinates = marker.getLngLat();
