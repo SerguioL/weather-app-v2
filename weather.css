@@ -8,6 +8,20 @@ article{
     margin: 0 10px 10px 10px;
     box-shadow:  5px 5px 5px grey;
 }
+h1{
+    margin: 0;
+    padding-left: 10px;
+    color: white;
+}
+
+nav{
+    background-color: #2D3142;
+    box-shadow:  5px 5px 5px grey;
+}
+
+main{
+    background-color: #B0D7FF;
+}
 
 #card-section {
     display: flex;
@@ -21,4 +35,21 @@ article{
     border: 2px solid darkgray;
     padding: 5px;
     width: 330px;
+}
+
+body {
+    overflow: hidden;
+}
+
+.map {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.list-group-item{
+    margin: 0;
+    background-color: #ADACB5;
+    color: white;
 }
