@@ -97,9 +97,9 @@ function renderWeather(data){
     var html = "";
 
     data.daily.forEach(function (day, index) {
-        if (index > 4) {
-            return;
-        }
+        // if (index > 4) {
+        //     return;
+        // }
         let current_datetime = new Date(day.dt * 1000);
         let formatted_date = current_datetime.getDate() + "-" + months[current_datetime.getMonth()] + "-" + current_datetime.getFullYear();
 
