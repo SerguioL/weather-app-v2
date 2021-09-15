@@ -53,3 +53,39 @@ body {
     background-color: #ADACB5;
     color: white;
 }
+
+article{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+p.list-group-item{
+    width: 100%;
+}
+
+.wrapper{
+    max-height: 300px;
+    border: 1px solid #2D3142;
+    display: flex;
+    overflow-x: auto;
+}
+
+.wrapper::-webkit-scrollbar{
+    width: 0;
+}
+
+/*.wrapper{*/
+/*    max-height: 120px;*/
+/*    border: 1px solid #ddd;*/
+/*    display: flex;*/
+/*    overflow-x: auto;*/
+/*}*/
+
+/*.wrapper .item{*/
+/*    width: 120px;*/
+/*    height: 120px;*/
+/*    line-height: 110;*/
+/*    text-align: center;*/
+/*    background-color: #ddd;*/
+/*}*/
