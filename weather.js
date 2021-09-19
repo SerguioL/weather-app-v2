@@ -1,3 +1,4 @@
+//This an array of months that used in the renderWeather function
 const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
 mapboxgl.accessToken = MAPBOX_API_TOKEN;
@@ -23,46 +24,31 @@ const geocoder = new MapboxGeocoder({
 // adds search bar for geocoder
 map.addControl(geocoder);
 
-//this gets the result of the geocoder a
+//this gets the result of the geocoder
 geocoder.on('result', function(data) {
-    console.log(data);
+    console.log(data)
+    $("#word").html(data.result.place_name);
+    console.log(data.result.center)
     marker.setLngLat(data.result.center);
-    weather(data.result.center[0],data.result.center[1]);
-    console.log(data);
+    weather(data.result.center[1],data.result.center[0]);
 });
-
-
-// var marker = new mapboxgl.Marker({draggable: true})
-//     .setLngLat([-98.4936, 29.4241])
-//     .addTo(map);
 
 
 // adds zoom + and -
 map.addControl(new mapboxgl.NavigationControl());
 
 
-
+//This makes the marker draggable
 marker.on('dragend', function () {
+    //This variables catches the latitude and longitude of the marker so
+    //That it can be used in the weather function and change the weather cards
     var markerCoordinates = marker.getLngLat();
-    // $("article").remove();
     weather(markerCoordinates.lat, markerCoordinates.lng);
 
 });
 
-
-document.querySelector('#change-map-btn').addEventListener('click', function () {
-    var address = document.querySelector('#address').value;
-    geocode(address, MAPBOX_API_TOKEN)
-        .then(function (result) {
-            map.setCenter(result);
-            marker.setLngLat(result);
-            console.log(result);
-            // $("article").remove();
-            weather(result[1], result[0]);
-        })
-});
-
-//convert API date?time new date (x * 1000);
+//This function takes a latitude and longitude and makes a AJAX request
+//To the Open Weather Map API which will be used to create the weather cards in the renderWeather function
 function weather(lat, lon) {
     $.get('https://api.openweathermap.org/data/2.5/onecall', {
         appid: WEATHER_APP_ID,
@@ -78,32 +64,16 @@ function weather(lat, lon) {
     });
 }
 
+// This function takes data form the weather function and creates a all the cards for the website
+// I used a forEach loop to create all the cards
 function renderWeather(data){
-    console.log(data);
-
-    // This function takes a number between 0 and 360 and returns a
-// wind direction abbreviation. the MapBox API gives us a "wind degrees" datum
-// this takes the "wind degrees" and converts it into a familiar abbreviation
-
-    // console.log(windCardinalDirection(data.daily[0].wind_deg));
-
-    // function appendLeadingZeroes(n) {
-    //     if (n <= 9) {
-    //         return "0" + n;
-    //     }
-    //     return n;
-    // }
 
     var html = "";
 
     data.daily.forEach(function (day, index) {
-        // if (index > 4) {
-        //     return;
-        // }
+        //These 2 variables convert the day.dt into day-month-year
         let current_datetime = new Date(day.dt * 1000);
         let formatted_date = current_datetime.getDate() + "-" + months[current_datetime.getMonth()] + "-" + current_datetime.getFullYear();
-
-        // let dynamicDay = new Date(data.daily[i].dt * 1000).toDateString()
 
         html += ('<article>' +
             '<p class="list-group-item">' + formatted_date + '</p>' +
@@ -113,13 +83,15 @@ function renderWeather(data){
             '<p class="list-group-item">' + 'Humidity: ' + day.humidity + '</p>' +
             '<p class="list-group-item">' + 'Wind: ' + day.wind_speed + ' ' + windCardinalDirection(day.wind_deg) + '</p>' +
             '<p class="list-group-item">' + 'Pressure: ' + day.pressure + '</p>' +
-            // '<p class="index" style="display: none">' + index + '</p>' +
             '</article>');
     });
     $("#card-section").html(html);
 
 }
 
+// This function takes a number between 0 and 360 and returns a
+// wind direction abbreviation. the MapBox API gives us a "wind degrees" datum
+// this takes the "wind degrees" and converts it into a familiar abbreviation
 function windCardinalDirection(degrees) {
     let cardinalDirection = '';
     if ((degrees > 348.75 && degrees <= 360) || (degrees >= 0 && degrees <= 11.25)) {
