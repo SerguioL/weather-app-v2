@@ -12,14 +12,10 @@
 
 <nav>
     <h1>Weather App</h1>
+    <p class="nav-current-location">Currently in: <span id="word"></span> </p>
 </nav>
 
 <main>
-
-    <div class="search">
-        <input id="address" type="text" placeholder="Enter address">
-        <button id="change-map-btn" class="btn btn-primary">Change Map</button>
-    </div>
 
 <div>
     <section id="card-section" class="wrapper"></section>
@@ -35,7 +31,6 @@
 <script src="jquery.js"></script>
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
-<script src="geocode-utils.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
