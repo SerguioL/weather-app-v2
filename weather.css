@@ -24,19 +24,17 @@ h1{
     color: white;
 }
 
-/*This makes the cards go horizontal*/
-article{
+article {
     margin: 0 10px 10px 10px;
-    display: flex;
+    /* display: flex; */
     flex-direction: row;
     width: 100%;
 }
 
-/*This makes controls the width and height of the map*/
 #map {
     margin: auto;
-    width: 98%;
-    height: 60vh;
+    width: 96%;
+    height: 267px;
 }
 
 /*This makes the cards warp downwards*/
@@ -46,11 +44,11 @@ article{
     justify-content: center;
 }
 
-.wrapper{
-    max-height: 300px;
+.wrapper {
+    max-height: 430px;
     border: 1px solid #2D3142;
-    display: flex;
-    overflow-x: auto;/*This allows the cards to overflow on the x-axis and not show up behind the map*/
+    /*display: flex;*/
+    overflow-x: auto;
 }
 
 /*This hides the scrollbar */
@@ -68,4 +66,77 @@ article{
 p.list-group-item{
     width: 100%;
     box-shadow:  5px 5px 5px grey;
+}
+@media screen and (min-width:576px) {
+
+    body {
+        overflow: hidden;
+        background-color: #B0D7FF;
+    }
+
+    nav{
+        background-color: #2D3142;
+        box-shadow:  5px 5px 5px grey;
+    }
+
+    #word{
+        color: white;
+    }
+
+    .nav-current-location{
+        padding: 10px;
+        color: white;
+    }
+
+    h1{
+        margin: 0;
+        padding-left: 10px;
+        color: white;
+    }
+
+    /*This makes the cards go horizontal*/
+    article{
+        margin: 0 10px 10px 10px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    /*This makes controls the width and height of the map*/
+    #map {
+        margin: auto;
+        width: 98%;
+        height: 60vh;
+    }
+
+    /*This makes the cards warp downwards*/
+    #card-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .wrapper{
+        max-height: 300px;
+        border: 1px solid #2D3142;
+        display: flex;
+        overflow-x: auto;/*This allows the cards to overflow on the x-axis and not show up behind the map*/
+    }
+
+    /*This hides the scrollbar */
+    .wrapper::-webkit-scrollbar{
+        width: 0;
+    }
+
+    /*This changes the font and background-color of the cards*/
+    .list-group-item{
+        margin: 0;
+        background-color: #ADACB5;
+        color: white;
+    }
+
+    p.list-group-item{
+        width: 100%;
+        box-shadow:  5px 5px 5px grey;
+    }
 }

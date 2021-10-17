@@ -74,7 +74,7 @@ function renderWeather(data){
         //These 2 variables convert the day.dt into day-month-year
         let current_datetime = new Date(day.dt * 1000);
         let formatted_date = current_datetime.getDate() + "-" + months[current_datetime.getMonth()] + "-" + current_datetime.getFullYear();
-
+//*
         html += ('<article>' +
             '<p class="list-group-item">' + formatted_date + '</p>' +
             '<p class="list-group-item">' + '<img src="http://openweathermap.org/img/wn/' + day.weather[0].icon + '@2x.png"/>' + '</p>' +
