@@ -1,7 +1,7 @@
 # README
 ___
 ## Weather App
-This weather app displays the weather forecast of any location for 8 days. It also allows you to move the marker to any location by dragging it. Theirs also a search bar that auto fills when you start typing.
+This weather app displays the weather forecast of any location for 8 days. It also allows you to move the marker to any location by dragging it. Theirs also a search bar that auto fills when you start typing. To use this project you must have an MapBox Api Token and a OpenWeatherMap Api token. 
 ___
 
 <ul>
